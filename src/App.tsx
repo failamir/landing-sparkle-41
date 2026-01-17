@@ -9,6 +9,8 @@ import HelpCenter from "./pages/HelpCenter";
 import WhatsNew from "./pages/WhatsNew";
 import SignIn from "./pages/SignIn";
 import NotFound from "./pages/NotFound";
+import EverydayHr from "./pages/EverydayHr";
+import TeamCulture from "./pages/TeamCulture";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/price" element={<Price />} />
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/whats-new" element={<WhatsNew />} />
+          <Route path="/everyday-hr" element={<EverydayHr />} />
+          <Route path="/team-culture" element={<TeamCulture />} />
           <Route path="/signin" element={<SignIn />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

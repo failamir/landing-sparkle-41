@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import everydayHrIcon from "@/assets/Everyday HR.avif";
+import teamCultureIcon from "@/assets/Team culture.avif";
+import growthFeedbackIcon from "@/assets/Growth & feedback.avif";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,10 +17,32 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBookDemo, setShowBookDemo] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isProductOpen, setIsProductOpen] = useState(false);
 
   const navLinks = [
-    { label: "Product", href: "/" },
+    { label: "Product", href: "/" }, // Kept for mobile reference if needed, but handled separately in desktop
     { label: "Price", href: "/price" },
+  ];
+
+  const productLinks = [
+    {
+      label: "Everyday HR",
+      description: "Let the essentials run smoothly.",
+      icon: everydayHrIcon,
+      href: "/everyday-hr",
+    },
+    {
+      label: "Team culture",
+      description: "Where connection becomes culture.",
+      icon: teamCultureIcon,
+      href: "/team-culture",
+    },
+    {
+      label: "Growth & feedback",
+      description: "Support and grow your team.",
+      icon: growthFeedbackIcon,
+      href: "/growth-feedback",
+    },
   ];
 
   const resourceLinks = [
@@ -56,7 +81,45 @@ const Navbar = () => {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
-          {navLinks.map((link) => (
+          {/* Product Dropdown */}
+          <DropdownMenu open={isProductOpen} onOpenChange={setIsProductOpen} modal={false}>
+            <DropdownMenuTrigger
+              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors outline-none"
+              onMouseEnter={() => setIsProductOpen(true)}
+            >
+              Product
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="start"
+              className="bg-background border border-border p-2 w-[320px]"
+              onMouseLeave={() => setIsProductOpen(false)}
+            >
+              {productLinks.map((link) => (
+                <DropdownMenuItem key={link.label} asChild>
+                  <Link
+                    to={link.href}
+                    className="flex items-start gap-4 p-3 cursor-pointer hover:bg-muted/50 rounded-md transition-colors selection:bg-transparent"
+                  >
+                    <img
+                      src={link.icon}
+                      alt={link.label}
+                      className="w-10 h-10 rounded-lg object-cover"
+                    />
+                    <div className="flex flex-col gap-1">
+                      <span className="text-sm font-semibold text-foreground leading-none">
+                        {link.label}
+                      </span>
+                      <span className="text-xs text-muted-foreground leading-snug">
+                        {link.description}
+                      </span>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {navLinks.slice(1).map((link) => (
             <Link
               key={link.label}
               to={link.href}
