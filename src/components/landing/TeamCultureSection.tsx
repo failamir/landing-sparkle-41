@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Users, Sparkles, Image } from "lucide-react";
+import { FileText, Users, Sparkles, Image } from "lucide-react";
 
 const TeamCultureSection = () => {
   return (
@@ -12,21 +11,17 @@ const TeamCultureSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-xl mb-16"
+          className="text-center mb-12"
         >
-          <span className="text-primary font-medium text-sm uppercase tracking-wider mb-4 block">
+          <span className="text-primary font-medium text-xs uppercase tracking-wider mb-4 block">
             Team culture
           </span>
-          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-4">
             Belong together.
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-base text-muted-foreground max-w-lg mx-auto">
             Stay connected, celebrate moments, and create a culture where people feel seen and included — no matter where they work.
           </p>
-          <Button variant="ghost" className="group">
-            Learn more 
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </motion.div>
 
         {/* Bento Grid - Asymmetric 2 columns */}
@@ -39,7 +34,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-violet-100 rounded-3xl p-6 flex flex-col"
+              className="bg-[#e8e4f8] rounded-3xl p-6 flex flex-col"
             >
               <div className="w-10 h-10 mb-4">
                 <FileText className="w-8 h-8 text-foreground" strokeWidth={1.5} />
@@ -80,7 +75,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-violet-200 rounded-3xl p-6 flex flex-col relative overflow-hidden flex-1"
+              className="bg-[#ddd6f3] rounded-3xl p-6 flex flex-col relative overflow-hidden flex-1 min-h-[280px]"
             >
               <div className="w-10 h-10 mb-4">
                 <Users className="w-8 h-8 text-foreground" strokeWidth={1.5} />
@@ -93,7 +88,7 @@ const TeamCultureSection = () => {
               {/* Decorative Smiley Cloud */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-8">
                 <div className="relative">
-                  <div className="w-40 h-24 bg-violet-400 rounded-t-full" />
+                  <div className="w-40 h-24 bg-[#c4b5fd] rounded-t-full" />
                   <div className="absolute top-8 left-1/2 -translate-x-1/2 flex flex-col items-center">
                     <div className="flex gap-6 mb-2">
                       <div className="w-2.5 h-2.5 bg-violet-700 rounded-full" />
@@ -139,7 +134,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="bg-amber-50 rounded-3xl p-6 flex flex-col"
+              className="bg-[#fef3e2] rounded-3xl p-6 flex flex-col"
             >
               <div className="w-10 h-10 mb-4">
                 <Image className="w-8 h-8 text-foreground" strokeWidth={1.5} />
