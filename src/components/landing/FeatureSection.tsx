@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Users, Calendar, FileText, UserPlus, Receipt } from "lucide-react";
+
+interface FeatureItem {
+  icon: React.ElementType;
+  label: string;
+}
 
 interface FeatureSectionProps {
   tag: string;
@@ -13,6 +18,19 @@ interface FeatureSectionProps {
   bgLight?: boolean;
 }
 
+const featureIcons: Record<string, React.ElementType> = {
+  "People directory": Users,
+  "Time off": Calendar,
+  "Contracts & documents": FileText,
+  "Onboarding & offboarding": UserPlus,
+  "Expenses": Receipt,
+  "1-1 Meetings": Users,
+  "Goals": Users,
+  "Forms": FileText,
+  "Skills": Users,
+  "Analytics": Users,
+};
+
 const FeatureSection = ({
   tag,
   title,
@@ -23,63 +41,80 @@ const FeatureSection = ({
   reversed = false,
   bgLight = false,
 }: FeatureSectionProps) => {
+  // Split features into two columns
+  const midpoint = Math.ceil(features.length / 2);
+  const leftFeatures = features.slice(0, midpoint);
+  const rightFeatures = features.slice(midpoint);
+
   return (
     <section className={`py-24 ${bgLight ? 'bg-section-light' : 'bg-background'}`}>
-      <div className="max-w-[840px] mx-auto px-6">
-        <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16`}>
-          {/* Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: reversed ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 max-w-xl"
-          >
-            <span className="text-primary font-medium text-sm uppercase tracking-wider mb-4 block">
-              {tag}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              {title}
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              {description}
-            </p>
-            
-            {/* Feature Pills */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              {features.map((feature) => (
-                <span 
-                  key={feature}
-                  className="px-4 py-2 bg-secondary rounded-full text-sm font-medium text-secondary-foreground"
-                >
-                  {feature}
-                </span>
-              ))}
+      <div className="max-w-[900px] mx-auto px-6">
+        {/* Content */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <span className="text-primary font-medium text-sm uppercase tracking-wider mb-4 block">
+            {tag}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight max-w-lg">
+            {title}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+            {description}
+          </p>
+          
+          <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full mb-10">
+            Learn more
+          </Button>
+          
+          {/* Feature List - 2 Columns */}
+          <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-md">
+            <div className="flex flex-col gap-4">
+              {leftFeatures.map((feature) => {
+                const Icon = featureIcons[feature] || Users;
+                return (
+                  <div key={feature} className="flex items-center gap-3">
+                    <Icon className="w-5 h-5 text-muted-foreground" />
+                    <span className="text-foreground font-medium">{feature}</span>
+                  </div>
+                );
+              })}
             </div>
+            <div className="flex flex-col gap-4">
+              {rightFeatures.map((feature) => {
+                const Icon = featureIcons[feature] || Users;
+                return (
+                  <div key={feature} className="flex items-center gap-3">
+                    <Icon className="w-5 h-5 text-muted-foreground" />
+                    <span className="text-foreground font-medium">{feature}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
 
-            <Button variant="ghost" className="group">
-              Learn more 
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div 
-            initial={{ opacity: 0, x: reversed ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex-1"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-card">
+        {/* Image - Full Width Below */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <div className="rounded-3xl overflow-hidden bg-gradient-to-b from-violet-100/50 to-violet-50/30 p-4 pt-8">
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-border/20">
               <img 
                 src={image} 
                 alt={imageAlt}
                 className="w-full h-auto"
               />
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
