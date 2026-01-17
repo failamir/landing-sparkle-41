@@ -49,9 +49,11 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Button variant="ghost" size="sm">
-            Sign in
-          </Button>
+          <Link to="/signin">
+            <Button variant="ghost" size="sm">
+              Sign in
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -86,9 +88,11 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="w-full justify-start">
-                  Sign in
-                </Button>
+                <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="ghost" size="sm" className="w-full justify-start">
+                    Sign in
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
