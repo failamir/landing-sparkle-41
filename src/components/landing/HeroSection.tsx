@@ -42,7 +42,7 @@ const HeroSection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium shadow-lg hover:scale-105 transition-transform">
+            <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium hover:scale-105 transition-transform">
               {/* All backgrounds stacked - crossfade effect */}
               {buttonBackgrounds.map((bg, index) => (
                 <img
