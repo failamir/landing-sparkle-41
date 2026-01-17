@@ -8,11 +8,27 @@ import btnBg2 from "@/assets/btn-bg-2.avif";
 import btnBg3 from "@/assets/btn-bg-3.avif";
 import btnBg4 from "@/assets/btn-bg-4.avif";
 import btnBg5 from "@/assets/btn-bg-5.avif";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const buttonBackgrounds = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
 
+const currencies = [
+  { code: "SEK", flag: "🇸🇪", price: "80 kr" },
+  { code: "GBP", flag: "🇬🇧", price: "£6" },
+  { code: "DKK", flag: "🇩🇰", price: "55 kr" },
+  { code: "EUR", flag: "🇪🇺", price: "€7" },
+  { code: "NOK", flag: "🇳🇴", price: "85 kr" },
+  { code: "USD", flag: "🇺🇸", price: "$8" },
+];
+
 const Price = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,7 +59,7 @@ const Price = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <main className="pt-32 pb-20">
         <div className="max-w-[840px] mx-auto px-6">
           {/* Header */}
@@ -71,15 +87,31 @@ const Price = () => {
             {/* Price */}
             <div className="text-center mb-8">
               <div className="text-5xl md:text-6xl font-bold text-foreground mb-4">
-                80 kr
+                {selectedCurrency.price}
               </div>
-              
+
               {/* Currency Selector */}
-              <button className="inline-flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border text-sm">
-                <span className="text-lg">🇸🇪</span>
-                <span>SEK</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="inline-flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border text-sm outline-none hover:bg-secondary/50 transition-colors">
+                    <span className="text-lg">{selectedCurrency.flag}</span>
+                    <span>{selectedCurrency.code}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="min-w-[120px]">
+                  {currencies.map((currency) => (
+                    <DropdownMenuItem
+                      key={currency.code}
+                      onClick={() => setSelectedCurrency(currency)}
+                      className="gap-2 cursor-pointer"
+                    >
+                      <span className="text-lg">{currency.flag}</span>
+                      <span>{currency.code}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Benefits Grid */}
