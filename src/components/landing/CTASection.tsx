@@ -36,7 +36,7 @@ const CTASection = () => {
           <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-2">
             Ready to get started?
           </h2>
-          <p className="text-4xl md:text-5xl font-bold text-muted-foreground/50">
+          <p className="text-3xl md:text-6xl font-bold text-muted-foreground/50">
             Launch in less than a week.
           </p>
         </motion.div>
