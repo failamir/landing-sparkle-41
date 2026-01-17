@@ -17,7 +17,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % buttonBackgrounds.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -49,7 +49,7 @@ const HeroSection = () => {
                   key={index}
                   src={bg}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
                   style={{ opacity: currentBgIndex === index ? 1 : 0 }}
                 />
               ))}
