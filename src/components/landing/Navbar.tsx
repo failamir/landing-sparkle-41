@@ -40,7 +40,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
-      <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-6 h-16 flex items-center justify-between relative">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
@@ -55,7 +55,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -67,7 +67,7 @@ const Navbar = () => {
           ))}
 
           {/* Resources Dropdown */}
-          <DropdownMenu open={isResourcesOpen} onOpenChange={setIsResourcesOpen}>
+          <DropdownMenu open={isResourcesOpen} onOpenChange={setIsResourcesOpen} modal={false}>
             <DropdownMenuTrigger
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors outline-none"
               onMouseEnter={() => setIsResourcesOpen(true)}
