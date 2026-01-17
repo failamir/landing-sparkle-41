@@ -1,9 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Zap } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.png";
+import btnBg1 from "@/assets/btn-bg-1.avif";
+import btnBg2 from "@/assets/btn-bg-2.avif";
+import btnBg3 from "@/assets/btn-bg-3.avif";
+import btnBg4 from "@/assets/btn-bg-4.avif";
+import btnBg5 from "@/assets/btn-bg-5.avif";
+import { useState, useEffect } from "react";
+
+const buttonBackgrounds = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
 
 const HeroSection = () => {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % buttonBackgrounds.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden bg-[var(--hero-gradient)]">
       <div className="container mx-auto px-6">
@@ -25,9 +42,22 @@ const HeroSection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button variant="hero" size="lg" className="min-w-[160px]">
-              Book a demo
-            </Button>
+            <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium shadow-lg hover:scale-105 transition-transform">
+              {/* Animated Background */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentBgIndex}
+                  src={buttonBackgrounds[currentBgIndex]}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </AnimatePresence>
+              <span className="relative z-10">Book a demo</span>
+            </button>
             <Button variant="heroOutline" size="lg" className="min-w-[160px]">
               Try for free
             </Button>
