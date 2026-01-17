@@ -96,9 +96,9 @@ const HeroSection = () => {
               style={{
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, calc(-50% - 10px))",
+                transform: "translate(-50%, calc(-50% - 15px))",
                 width: "calc(100% + 80px)",
-                height: "calc(100% + 60px)",
+                height: "calc(100% + 50px)",
               }}
             />
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
