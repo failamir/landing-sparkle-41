@@ -95,7 +95,7 @@ const HeroSection = () => {
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 max-w-none rounded-[32px] object-cover"
               style={{
                 width: "calc(100% + 80px)",
-                height: "calc(100% + 80px)",
+                height: "calc(100% + 60px)",
               }}
             />
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
