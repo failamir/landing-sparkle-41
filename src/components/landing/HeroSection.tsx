@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
+import heroDashboard from "@/assets/hero-dashboard.png";
 
 const HeroSection = () => {
   return (
@@ -56,7 +57,7 @@ const HeroSection = () => {
             {/* Main Dashboard Image */}
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
               <img 
-                src="https://framerusercontent.com/images/QWmiVs64Fn6e8PA5SV1OcBG95rk.png" 
+                src={heroDashboard} 
                 alt="Aboard HR Dashboard" 
                 className="w-full h-auto"
               />
