@@ -27,7 +27,7 @@ const BuiltForPeopleSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-16 leading-tight">
+          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-16 leading-tight">
             Built for people,{" "}
             <span className="inline-block align-middle">
               <img 
