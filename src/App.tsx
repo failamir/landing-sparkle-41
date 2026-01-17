@@ -12,6 +12,8 @@ import NotFound from "./pages/NotFound";
 import EverydayHr from "./pages/EverydayHr";
 import TeamCulture from "./pages/TeamCulture";
 
+import GrowthFeedback from "./pages/GrowthFeedback";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,6 +29,7 @@ const App = () => (
           <Route path="/whats-new" element={<WhatsNew />} />
           <Route path="/everyday-hr" element={<EverydayHr />} />
           <Route path="/team-culture" element={<TeamCulture />} />
+          <Route path="/growth-feedback" element={<GrowthFeedback />} />
           <Route path="/signin" element={<SignIn />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
