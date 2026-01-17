@@ -72,68 +72,75 @@ const WhatsNew = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
       <Navbar />
-      
-      <main className="pt-32 pb-20">
-        <div className="max-w-[840px] mx-auto px-6">
+
+      <main className="pt-32 pb-24">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
+            className="mb-20"
           >
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              What's new in Aboard
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+              What's new
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Stay up to date with the latest features, improvements, and updates.
+            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+              We're constantly improving Aboard. See the latest features, improvements, and updates we've made to help you manage your team better.
             </p>
           </motion.div>
 
           {/* Updates Timeline */}
-          <div className="space-y-16">
+          <div className="space-y-20 relative">
+            <div className="absolute left-[200px] top-0 bottom-0 w-px bg-border hidden md:block" />
+
             {updates.map((update, index) => (
               <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="relative"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16 relative"
               >
-                {/* Date */}
-                <div className="text-sm text-muted-foreground mb-3">
-                  {update.date}
+                {/* Date Side */}
+                <div className="md:text-right md:sticky md:top-32 h-fit pt-2">
+                  <span className="text-sm font-semibold text-muted-foreground/80 uppercase tracking-wider block mb-2">
+                    {update.date}
+                  </span>
+                  {/* Decorative dot on timeline */}
+                  <div className="hidden md:block absolute right-0 top-[1.15rem] translate-x-1/2 w-3 h-3 rounded-full bg-background border-[3px] border-primary z-10" />
                 </div>
-                
-                {/* Tag */}
-                <Badge 
-                  variant="secondary" 
-                  className={`${update.tagColor} mb-3 font-medium text-xs`}
-                >
-                  {update.tag}
-                </Badge>
-                
-                {/* Title */}
-                <h2 className="text-2xl font-bold text-foreground mb-4">
-                  {update.title}
-                </h2>
-                
-                {/* Image */}
-                <div className="rounded-2xl overflow-hidden mb-4 border border-border">
-                  <img 
-                    src={update.image}
-                    alt={update.title}
-                    className="w-full h-auto object-cover"
-                  />
+
+                {/* Content Side */}
+                <div className="space-y-6 max-w-2xl">
+                  <div>
+                    <Badge
+                      variant="secondary"
+                      className={`${update.tagColor} mb-4 font-semibold text-[10px] uppercase tracking-widest px-2.5 py-1 border-0`}
+                    >
+                      {update.tag}
+                    </Badge>
+
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                      {update.title}
+                    </h2>
+
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {update.description}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl overflow-hidden shadow-lg border border-border/50 ring-1 ring-border/50 bg-card group cursor-zoom-in transition-all hover:shadow-xl hover:ring-border hover:-translate-y-0.5">
+                    <img
+                      src={update.image}
+                      alt={update.title}
+                      className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
-                
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed">
-                  {update.description}
-                </p>
               </motion.article>
             ))}
           </div>
