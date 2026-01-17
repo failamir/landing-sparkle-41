@@ -2,32 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* Font Family */
+    --font-primary: "Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    
+    /* Colors */
     --background: 0 0% 100%;
-    --foreground: 220 20% 20%;
+    --foreground: 0 0% 15%; /* #262626 */
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 20%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
+    --popover-foreground: 0 0% 15%;
 
     --primary: 207 90% 54%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 20% 96%;
-    --secondary-foreground: 220 20% 20%;
+    --secondary-foreground: 0 0% 15%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 220 10% 50%;
+    --muted-foreground: 240 2% 24%; /* rgba(60, 60, 63, 0.7) equivalent */
 
     --accent: 45 100% 60%;
-    --accent-foreground: 220 20% 15%;
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -37,6 +43,11 @@ All colors MUST be HSL.
     --ring: 207 90% 54%;
 
     --radius: 0.75rem;
+
+    /* Text Colors */
+    --text-primary: 0 0% 15%; /* #262626 */
+    --text-secondary: 240 2% 24%; /* rgba(60, 60, 63, 0.7) */
+    --text-tertiary: 240 2% 24%; /* rgba(60, 60, 63, 0.4) - will use opacity */
 
     /* Custom tokens */
     --hero-gradient: linear-gradient(180deg, hsl(200 30% 98%) 0%, hsl(0 0% 100%) 100%);
@@ -81,7 +92,112 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    font-family: var(--font-primary);
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography Presets */
+  h1 {
+    @apply text-foreground;
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    line-height: 100%;
+  }
+
+  h2 {
+    @apply text-foreground;
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.28px;
+    line-height: 100%;
+  }
+
+  h3 {
+    @apply text-foreground;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -0.123px;
+    line-height: 110%;
+  }
+
+  h5 {
+    @apply text-foreground;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 140%;
+  }
+
+  /* Responsive Typography */
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 56px;
+    }
+    h2 {
+      font-size: 48px;
+    }
+    h3 {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 40px;
+    }
+  }
+}
+
+/* Custom Typography Classes */
+@layer components {
+  .text-body-large {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 160%;
+  }
+
+  .text-body-label {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 150%;
+  }
+
+  .text-nav {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 2em;
+  }
+
+  .text-button {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+  }
+
+  .text-secondary {
+    color: rgba(60, 60, 63, 0.7);
+  }
+
+  .text-tertiary {
+    color: rgba(60, 60, 63, 0.4);
   }
 }

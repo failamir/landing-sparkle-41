@@ -27,13 +27,13 @@ const BuiltForPeopleSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-16 leading-tight">
+          <h2 className="text-[40px] md:text-[56px] font-bold text-foreground mb-16 leading-[100%] tracking-[-0.28px]">
             Built for people,{" "}
             <span className="inline-block align-middle">
               <img 
                 src="https://framerusercontent.com/images/uueZ7ykrYjwPdZTJmk6qMmNeOBQ.png" 
                 alt="Smiling faces" 
-                className="inline h-10 md:h-12 mx-1 rounded-lg"
+                className="inline h-[40px] md:h-[48px] mx-1 rounded-lg"
               />
             </span>
             {" "}not just the process around them.
@@ -49,8 +49,8 @@ const BuiltForPeopleSection = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="flex flex-col items-center text-center"
               >
-                <pillar.icon className="w-8 h-8 text-foreground mb-3" strokeWidth={1} />
-                <p className="text-sm text-muted-foreground">
+                <pillar.icon className="w-7 h-7 text-foreground mb-3" strokeWidth={1} />
+                <p className="text-[15px] font-medium" style={{ color: 'rgba(60, 60, 63, 0.7)' }}>
                   {pillar.text}
                 </p>
               </motion.div>
