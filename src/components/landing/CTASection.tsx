@@ -1,26 +1,22 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Headphones, Rocket } from "lucide-react";
+import { Check } from "lucide-react";
 
 const CTASection = () => {
   const benefits = [
     {
-      icon: Check,
       title: "All included",
       description: "Full access from day one — nothing held back.",
     },
     {
-      icon: Sparkles,
       title: "No fees",
       description: "Transparent pricing with zero hidden costs.",
     },
     {
-      icon: Rocket,
       title: "Setup",
       description: "Go live fast and smooth with expert onboarding support.",
     },
     {
-      icon: Headphones,
       title: "Support",
       description: "Real people, ready to help whenever you need.",
     },
@@ -39,7 +35,7 @@ const CTASection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
             Ready to get started?
           </h2>
-          <p className="text-4xl md:text-5xl font-bold text-foreground">
+          <p className="text-4xl md:text-5xl font-bold text-muted-foreground/50">
             Launch in less than a week.
           </p>
         </motion.div>
@@ -55,8 +51,8 @@ const CTASection = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="text-center"
             >
-              <div className="w-12 h-12 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
-                <benefit.icon className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 mx-auto mb-4 bg-foreground rounded-full flex items-center justify-center">
+                <Check className="w-6 h-6 text-background" strokeWidth={3} />
               </div>
               <h3 className="font-semibold text-foreground mb-2">
                 {benefit.title}
