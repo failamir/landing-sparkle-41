@@ -57,17 +57,17 @@ const FeatureSection = ({
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="text-primary font-semibold text-[15px] mb-4 block">
+          <span className="text-primary font-medium text-xs uppercase tracking-wider mb-3 block">
             {tag}
           </span>
-          <h2 className="text-[40px] md:text-[44px] font-semibold text-foreground mb-4 leading-[110%] tracking-[-0.123px] max-w-md">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight max-w-md">
             {title}
           </h2>
-          <p className="text-[20px] font-medium mb-6 max-w-md leading-[160%]" style={{ color: 'rgba(60, 60, 63, 0.7)' }}>
+          <p className="text-base text-muted-foreground mb-6 max-w-md leading-relaxed">
             {description}
           </p>
           
-          <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full text-[15px] font-semibold h-11 px-5 mb-8">
+          <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full text-sm h-10 px-5 mb-8">
             Learn more
           </Button>
           
@@ -78,8 +78,8 @@ const FeatureSection = ({
                 const Icon = featureIcons[feature] || Users;
                 return (
                   <div key={feature} className="flex items-center gap-2">
-                    <Icon className="w-[18px] h-[18px]" style={{ color: 'rgba(60, 60, 63, 0.7)' }} strokeWidth={1.5} />
-                    <span className="text-foreground text-[15px] font-medium">{feature}</span>
+                    <Icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
+                    <span className="text-foreground text-sm font-medium">{feature}</span>
                   </div>
                 );
               })}
@@ -89,8 +89,8 @@ const FeatureSection = ({
                 const Icon = featureIcons[feature] || Users;
                 return (
                   <div key={feature} className="flex items-center gap-2">
-                    <Icon className="w-[18px] h-[18px]" style={{ color: 'rgba(60, 60, 63, 0.7)' }} strokeWidth={1.5} />
-                    <span className="text-foreground text-[15px] font-medium">{feature}</span>
+                    <Icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
+                    <span className="text-foreground text-sm font-medium">{feature}</span>
                   </div>
                 );
               })}

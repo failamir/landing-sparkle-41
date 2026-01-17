@@ -40,8 +40,7 @@ const Navbar = () => {
             <Link 
               key={link.label}
               to={link.href} 
-              className="text-[15px] font-medium transition-colors tracking-[-0.01em]"
-              style={{ color: 'rgba(60, 60, 63, 0.7)' }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -51,7 +50,7 @@ const Navbar = () => {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link to="/signin">
-            <Button variant="ghost" size="sm" className="text-[15px] font-medium tracking-[-0.01em]" style={{ color: 'rgba(60, 60, 63, 0.7)' }}>
+            <Button variant="ghost" size="sm" className="text-sm">
               Sign in
             </Button>
           </Link>

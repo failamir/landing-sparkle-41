@@ -31,18 +31,18 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h1 className="text-[48px] md:text-[64px] font-semibold text-foreground leading-[100%] mb-6 tracking-[-0.6px]">
+          <h1 className="text-6xl md:text-8xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight">
             Bring joy to
             <br />
             your workplace.
           </h1>
-          <p className="text-[20px] text-secondary font-medium mb-10 max-w-2xl mx-auto leading-[160%]" style={{ color: 'rgba(60, 60, 63, 0.7)' }}>
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-normal">
             Take care of the everyday moments that shape how your team works, connects — and grows.
           </p>
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <button className="relative min-w-[140px] h-11 px-5 rounded-full overflow-hidden text-white font-semibold text-[15px] hover:scale-105 transition-transform">
+            <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium hover:scale-105 transition-transform">
               {/* All backgrounds stacked - crossfade effect */}
               {buttonBackgrounds.map((bg, index) => (
                 <img
@@ -58,7 +58,7 @@ const HeroSection = () => {
             <Button 
               variant="secondary" 
               size="lg" 
-              className="min-w-[140px] h-11 px-5 bg-sky-100 text-sky-500 hover:bg-sky-200 border-0 text-[15px] font-semibold"
+              className="min-w-[160px] bg-sky-100 text-sky-500 hover:bg-sky-200 border-0"
             >
               Try for free
             </Button>
