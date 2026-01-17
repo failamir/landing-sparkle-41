@@ -17,7 +17,7 @@ const TeamCultureSection = () => {
           <span className="text-primary font-medium text-sm uppercase tracking-wider mb-4 block">
             Team culture
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-6">
             Belong together.
           </h2>
           <p className="text-lg text-muted-foreground mb-8">

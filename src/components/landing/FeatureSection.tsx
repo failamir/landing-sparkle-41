@@ -60,7 +60,7 @@ const FeatureSection = ({
           <span className="text-primary font-medium text-xs uppercase tracking-wider mb-3 block">
             {tag}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight max-w-md">
+          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-4 leading-tight max-w-md">
             {title}
           </h2>
           <p className="text-base text-muted-foreground mb-6 max-w-md leading-relaxed">
