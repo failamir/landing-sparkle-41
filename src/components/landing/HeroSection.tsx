@@ -31,12 +31,12 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight mb-6">
+          <h1 className="text-6xl md:text-8xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight">
             Bring joy to
             <br />
             your workplace.
           </h1>
-          <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-normal">
             Take care of the everyday moments that shape how your team works, connects — and grows.
           </p>
           
