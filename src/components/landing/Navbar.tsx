@@ -1,7 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: "Product", href: "/" },
+    { label: "Price", href: "/price" },
+    { label: "Resources", href: "/resources" },
+  ];
+
   return (
     <motion.header 
       initial={{ opacity: 0, y: -20 }}
@@ -11,7 +22,7 @@ const Navbar = () => {
     >
       <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary-foreground" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -21,26 +32,68 @@ const Navbar = () => {
             <span className="font-bold text-foreground">Aboard</span>
             <span className="text-xs text-muted-foreground">By Teamtailor</span>
           </div>
-        </div>
+        </Link>
 
-        {/* Nav Links */}
+        {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#product" className="text-muted-foreground hover:text-foreground transition-colors">
-            Product
-          </a>
-          <a href="#price" className="text-muted-foreground hover:text-foreground transition-colors">
-            Price
-          </a>
-          <a href="#resources" className="text-muted-foreground hover:text-foreground transition-colors">
-            Resources
-          </a>
+          {navLinks.map((link) => (
+            <Link 
+              key={link.label}
+              to={link.href} 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
-        {/* CTA */}
-        <Button variant="ghost" size="sm">
-          Sign in
-        </Button>
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <Button variant="ghost" size="sm">
+            Sign in
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 text-foreground"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-background border-b border-border overflow-hidden"
+          >
+            <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-foreground hover:text-primary transition-colors py-2"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="pt-4 border-t border-border">
+                <Button variant="ghost" size="sm" className="w-full justify-start">
+                  Sign in
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
