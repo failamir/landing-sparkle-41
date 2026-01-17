@@ -92,8 +92,11 @@ const HeroSection = () => {
             <img
               src={sky}
               alt=""
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 max-w-none rounded-[32px] object-cover"
+              className="absolute z-0 max-w-none rounded-[32px] object-cover"
               style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, calc(-50% - 10px))",
                 width: "calc(100% + 80px)",
                 height: "calc(100% + 60px)",
               }}
