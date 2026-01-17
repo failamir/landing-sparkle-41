@@ -22,25 +22,25 @@ const Navbar = () => {
     >
       <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary-foreground" fill="currentColor">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
+            <svg viewBox="0 0 24 24" className="w-4 h-4 text-primary-foreground" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-foreground">Aboard</span>
-            <span className="text-xs text-muted-foreground">By Teamtailor</span>
+            <span className="font-semibold text-foreground text-sm">Aboard</span>
+            <span className="text-[10px] text-muted-foreground leading-tight">By Teamtailor</span>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link 
               key={link.label}
               to={link.href} 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -50,7 +50,7 @@ const Navbar = () => {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link to="/signin">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="text-sm">
               Sign in
             </Button>
           </Link>
