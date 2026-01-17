@@ -16,16 +16,15 @@ const Footer = () => {
 
   return (
     <footer className="py-12 bg-background">
-      <div className="container mx-auto px-6 max-w-md">
+      <div className="max-w-[840px] mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center"
         >
           {/* Logo */}
-          <Sailboat className="w-8 h-8 text-muted-foreground/50 mb-4" />
+          <Sailboat className="w-6 h-6 text-muted-foreground/40 mb-6" />
 
           {/* Tagline */}
           <p className="text-xl font-medium text-foreground mb-8">
@@ -33,7 +32,7 @@ const Footer = () => {
           </p>
 
           {/* Links - Two Columns */}
-          <div className="grid grid-cols-2 gap-x-16 gap-y-2 mb-8">
+          <div className="grid grid-cols-2 gap-x-24 gap-y-2 mb-12 max-w-sm">
             <div className="flex flex-col gap-2">
               {leftLinks.map((link) => (
                 <a
@@ -59,7 +58,7 @@ const Footer = () => {
           </div>
 
           {/* Bottom */}
-          <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground/60">
+          <div className="flex items-center gap-8 text-sm text-muted-foreground/50">
             <a 
               href="#" 
               className="hover:text-foreground transition-colors"
