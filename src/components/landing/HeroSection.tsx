@@ -92,10 +92,13 @@ const HeroSection = () => {
             <img
               src={sky}
               alt=""
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 max-w-none rounded-[32px] object-cover"
+              className="absolute z-0 max-w-none rounded-[32px] object-cover"
               style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, calc(-50% - 20px))",
                 width: "calc(100% + 80px)",
-                height: "calc(100% + 80px)",
+                height: "calc(100% + 40px)",
               }}
             />
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
@@ -112,7 +115,7 @@ const HeroSection = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-4 md:-right-8 top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card z-20"
+              className="absolute right-[14px] md:right-[22px] top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card z-20"
             >
               <img
                 src="https://framerusercontent.com/images/OAfFV1qg6kFwEfYQu3EMYzDu8EE.png"
