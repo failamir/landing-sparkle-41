@@ -15,7 +15,7 @@ const Index = () => {
       
       <FeatureSection
         tag="Everyday HR"
-        title="All the basics, done beautifully."
+        title={<>All the basics,<br />done beautifully.</>}
         description="From time off to contracts, Aboard takes care of the everyday stuff without feeling like work. It's everything your team needs to stay organized and supported — without the usual friction."
         features={["People directory", "Time off", "Contracts & documents", "Onboarding & offboarding", "Expenses"]}
         image="https://framerusercontent.com/images/wZj3XICZfKe91G2EmzUSJc88Uk.png"
