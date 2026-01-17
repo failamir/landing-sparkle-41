@@ -25,7 +25,7 @@ const FeatureSection = ({
 }: FeatureSectionProps) => {
   return (
     <section className={`py-24 ${bgLight ? 'bg-section-light' : 'bg-background'}`}>
-      <div className="container mx-auto px-6">
+      <div className="max-w-[840px] mx-auto px-6">
         <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16`}>
           {/* Content */}
           <motion.div 
