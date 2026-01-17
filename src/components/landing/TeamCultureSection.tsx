@@ -34,7 +34,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-[#ebe7f6] rounded-2xl p-5 flex flex-col"
+              className="bg-[#e0f0ff] rounded-2xl p-5 flex flex-col min-h-[400px]"
             >
               <div className="mb-3">
                 <FileText className="w-7 h-7 text-foreground" strokeWidth={1.5} />
@@ -77,7 +77,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-[#e0d8f4] rounded-2xl p-5 flex flex-col relative overflow-hidden flex-1 min-h-[260px]"
+              className="bg-[#e0d8f4] rounded-2xl p-5 flex flex-col relative overflow-hidden flex-1 min-h-[360px]"
             >
               <div className="mb-3">
                 <Users className="w-7 h-7 text-foreground" strokeWidth={1.5} />
@@ -111,7 +111,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="relative rounded-2xl overflow-hidden flex-1 min-h-[300px]"
+              className="relative rounded-2xl overflow-hidden flex-1 min-h-[400px]"
             >
               <img 
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=500&fit=crop" 
@@ -136,7 +136,7 @@ const TeamCultureSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="bg-[#fef4e4] rounded-2xl p-5 flex flex-col"
+              className="bg-[#fff8dc] rounded-2xl p-5 flex flex-col min-h-[360px]"
             >
               <div className="mb-3">
                 <Image className="w-7 h-7 text-foreground" strokeWidth={1.5} />
