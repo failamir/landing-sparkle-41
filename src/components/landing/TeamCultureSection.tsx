@@ -5,7 +5,7 @@ import { ArrowRight, FileText, Users, Sparkles, Image } from "lucide-react";
 const TeamCultureSection = () => {
   return (
     <section className="py-24 bg-section-light">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[840px] mx-auto px-6">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
