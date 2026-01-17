@@ -2,7 +2,7 @@ import Navbar from "@/components/landing/Navbar";
 import { motion } from "framer-motion";
 import { Search, BookOpen, User, Zap, Rocket, Play, Video, Upload, ChevronRight } from "lucide-react";
 
-const Resources = () => {
+const HelpCenter = () => {
   const resourceCategories = [
     {
       icon: BookOpen,
@@ -177,4 +177,4 @@ const Resources = () => {
   );
 };
 
-export default Resources;
+export default HelpCenter;
