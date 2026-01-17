@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -25,7 +25,6 @@ const Navbar = () => {
     { label: "Help center", href: "/help-center" },
   ];
 
-  // Track scroll position for Book demo button
   useEffect(() => {
     const handleScroll = () => {
       setShowBookDemo(window.scrollY > 100);
@@ -35,7 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -58,26 +57,25 @@ const Navbar = () => {
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <Link 
+            <Link
               key={link.label}
-              to={link.href} 
+              to={link.href}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
           ))}
-          
+
           {/* Resources Dropdown */}
           <DropdownMenu open={isResourcesOpen} onOpenChange={setIsResourcesOpen}>
-            <DropdownMenuTrigger 
+            <DropdownMenuTrigger
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors outline-none"
               onMouseEnter={() => setIsResourcesOpen(true)}
             >
               Resources
-              <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent 
-              align="start" 
+            <DropdownMenuContent
+              align="start"
               className="bg-background border border-border"
               onMouseLeave={() => setIsResourcesOpen(false)}
             >
@@ -99,7 +97,7 @@ const Navbar = () => {
               Sign in
             </Button>
           </Link>
-          
+
           <AnimatePresence>
             {showBookDemo && (
               <motion.div
@@ -108,12 +106,14 @@ const Navbar = () => {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <Button 
-                  size="sm" 
-                  className="bg-[#7dd3fc] hover:bg-[#7dd3fc]/90 text-foreground font-semibold"
-                >
-                  Book demo
-                </Button>
+                <Link to="/book-demo">
+                  <Button
+                    size="sm"
+                    className="bg-[#7dd3fc] hover:bg-[#7dd3fc]/90 text-foreground font-semibold"
+                  >
+                    Book demo
+                  </Button>
+                </Link>
               </motion.div>
             )}
           </AnimatePresence>
@@ -150,7 +150,7 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              
+
               {/* Mobile Resources Section */}
               <div className="py-2">
                 <span className="text-sm text-muted-foreground mb-2 block">Resources</span>
@@ -167,7 +167,7 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className="pt-4 border-t border-border">
                 <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="ghost" size="sm" className="w-full justify-start">

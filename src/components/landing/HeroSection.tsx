@@ -7,9 +7,12 @@ import btnBg2 from "@/assets/btn-bg-2.avif";
 import btnBg3 from "@/assets/btn-bg-3.avif";
 import btnBg4 from "@/assets/btn-bg-4.avif";
 import btnBg5 from "@/assets/btn-bg-5.avif";
+
 import { useState, useEffect } from "react";
 
 const buttonBackgrounds = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
+
+import sky from "@/assets/sky.avif";
 
 const HeroSection = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -25,7 +28,7 @@ const HeroSection = () => {
     <section className="relative pt-32 pb-20 overflow-hidden bg-[var(--hero-gradient)]">
       <div className="container mx-auto px-6 max-w-[840px]">
         {/* Hero Content */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -39,7 +42,7 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-normal">
             Take care of the everyday moments that shape how your team works, connects — and grows.
           </p>
-          
+
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium hover:scale-105 transition-transform">
@@ -55,9 +58,9 @@ const HeroSection = () => {
               ))}
               <span className="relative z-10">Book a demo</span>
             </button>
-            <Button 
-              variant="secondary" 
-              size="lg" 
+            <Button
+              variant="secondary"
+              size="lg"
               className="min-w-[160px] bg-sky-100 text-sky-500 hover:bg-sky-200 border-0"
             >
               Try for free
@@ -65,7 +68,7 @@ const HeroSection = () => {
           </div>
 
           {/* Update Badge */}
-          <motion.a 
+          <motion.a
             href="#"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -78,7 +81,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Product Screenshot */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
@@ -86,25 +89,34 @@ const HeroSection = () => {
         >
           <div className="relative mx-auto max-w-5xl">
             {/* Main Dashboard Image */}
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
-              <img 
-                src={heroDashboard} 
-                alt="Aboard HR Dashboard" 
+            <img
+              src={sky}
+              alt=""
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 max-w-none rounded-[32px] object-cover"
+              style={{
+                width: "calc(100% + 80px)",
+                height: "calc(100% + 80px)",
+              }}
+            />
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
+              <img
+                src={heroDashboard}
+                alt="Aboard HR Dashboard"
                 className="w-full h-auto"
                 width={1022}
                 height={727}
               />
             </div>
-            
+
             {/* Floating Elements */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-4 md:-right-8 top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card"
+              className="absolute -right-4 md:-right-8 top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card z-20"
             >
-              <img 
-                src="https://framerusercontent.com/images/OAfFV1qg6kFwEfYQu3EMYzDu8EE.png" 
-                alt="Time off widget" 
+              <img
+                src="https://framerusercontent.com/images/OAfFV1qg6kFwEfYQu3EMYzDu8EE.png"
+                alt="Time off widget"
                 className="w-full h-auto"
               />
             </motion.div>
