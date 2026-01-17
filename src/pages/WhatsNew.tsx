@@ -76,25 +76,12 @@ const WhatsNew = () => {
       <Navbar />
 
       <main className="pt-32 pb-24">
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-20"
-          >
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-              What's new
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              We're constantly improving Aboard. See the latest features, improvements, and updates we've made to help you manage your team better.
-            </p>
-          </motion.div>
+        <div className="max-w-[680px] mx-auto px-6">
+
 
           {/* Updates Timeline */}
           <div className="space-y-20 relative">
-            <div className="absolute left-[200px] top-0 bottom-0 w-px bg-border hidden md:block" />
+
 
             {updates.map((update, index) => (
               <motion.article
@@ -103,37 +90,38 @@ const WhatsNew = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16 relative"
+                className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-8 md:gap-12 relative"
               >
                 {/* Date Side */}
                 <div className="md:text-right md:sticky md:top-32 h-fit pt-2">
-                  <span className="text-sm font-semibold text-muted-foreground/80 uppercase tracking-wider block mb-2">
+                  <span className="text-sm font-semibold text-muted-foreground/60 uppercase tracking-wider block mb-2">
                     {update.date}
                   </span>
-                  {/* Decorative dot on timeline */}
-                  <div className="hidden md:block absolute right-0 top-[1.15rem] translate-x-1/2 w-3 h-3 rounded-full bg-background border-[3px] border-primary z-10" />
+
                 </div>
 
                 {/* Content Side */}
-                <div className="space-y-6 max-w-2xl">
-                  <div>
-                    <Badge
-                      variant="secondary"
-                      className={`${update.tagColor} mb-4 font-semibold text-[10px] uppercase tracking-widest px-2.5 py-1 border-0`}
-                    >
-                      {update.tag}
-                    </Badge>
-
-                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                <div className="space-y-4 max-w-2xl">
+                  <div className="flex flex-col gap-3">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
                       {update.title}
                     </h2>
 
-                    <p className="text-muted-foreground text-lg leading-relaxed">
+                    <div>
+                      <Badge
+                        variant="secondary"
+                        className={`${update.tagColor} font-semibold text-[10px] uppercase tracking-widest px-2.5 py-1 border-0`}
+                      >
+                        {update.tag}
+                      </Badge>
+                    </div>
+
+                    <p className="text-muted-foreground text-lg leading-relaxed pt-2">
                       {update.description}
                     </p>
                   </div>
 
-                  <div className="rounded-xl overflow-hidden shadow-lg border border-border/50 ring-1 ring-border/50 bg-card group cursor-zoom-in transition-all hover:shadow-xl hover:ring-border hover:-translate-y-0.5">
+                  <div className="rounded-xl overflow-hidden shadow-sm border border-border/50 bg-card group cursor-zoom-in transition-all hover:shadow-md hover:border-border mt-4">
                     <img
                       src={update.image}
                       alt={update.title}
