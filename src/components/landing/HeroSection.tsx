@@ -55,7 +55,11 @@ const HeroSection = () => {
               ))}
               <span className="relative z-10">Book a demo</span>
             </button>
-            <Button variant="heroOutline" size="lg" className="min-w-[160px]">
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="min-w-[160px] bg-sky-100 text-sky-500 hover:bg-sky-200 border-0"
+            >
               Try for free
             </Button>
           </div>
