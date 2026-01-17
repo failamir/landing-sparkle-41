@@ -20,6 +20,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBookDemo, setShowBookDemo] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   
   const backgroundImages = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
 
@@ -84,12 +85,19 @@ const Navbar = () => {
           ))}
           
           {/* Resources Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors outline-none">
+          <DropdownMenu open={isResourcesOpen} onOpenChange={setIsResourcesOpen}>
+            <DropdownMenuTrigger 
+              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors outline-none"
+              onMouseEnter={() => setIsResourcesOpen(true)}
+            >
               Resources
               <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="bg-background border border-border">
+            <DropdownMenuContent 
+              align="start" 
+              className="bg-background border border-border"
+              onMouseLeave={() => setIsResourcesOpen(false)}
+            >
               {resourceLinks.map((link) => (
                 <DropdownMenuItem key={link.label} asChild>
                   <Link to={link.href} className="cursor-pointer">
