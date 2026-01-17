@@ -1,8 +1,25 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { useState, useEffect } from "react";
+import btnBg1 from "@/assets/btn-bg-1.avif";
+import btnBg2 from "@/assets/btn-bg-2.avif";
+import btnBg3 from "@/assets/btn-bg-3.avif";
+import btnBg4 from "@/assets/btn-bg-4.avif";
+import btnBg5 from "@/assets/btn-bg-5.avif";
+
+const buttonBackgrounds = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
 
 const CTASection = () => {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % buttonBackgrounds.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const benefits = [
     {
       title: "All included",
@@ -64,16 +81,33 @@ const CTASection = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="text-center"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="hero" size="xl">
-            Book a demo
+          <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium hover:scale-105 transition-transform">
+            {/* All backgrounds stacked - crossfade effect */}
+            {buttonBackgrounds.map((bg, index) => (
+              <img
+                key={index}
+                src={bg}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+                style={{ opacity: currentBgIndex === index ? 1 : 0 }}
+              />
+            ))}
+            <span className="relative z-10">Book a demo</span>
+          </button>
+          <Button 
+            variant="secondary" 
+            size="lg" 
+            className="min-w-[160px] bg-sky-100 text-sky-500 hover:bg-sky-200 border-0"
+          >
+            Try for free
           </Button>
         </motion.div>
       </div>
