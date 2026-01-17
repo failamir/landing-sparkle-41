@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Users, Calendar, FileText, UserPlus, Receipt } from "lucide-react";
 
 interface FeatureItem {
@@ -60,16 +59,12 @@ const FeatureSection = ({
           <span className="text-primary font-medium text-xs uppercase tracking-wider mb-3 block">
             {tag}
           </span>
-          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-4 leading-tight max-w-md">
+          <h2 className="text-3xl md:text-6xl font-bold text-foreground mb-4 leading-tight max-w-lg whitespace-nowrap">
             {title}
           </h2>
-          <p className="text-base text-muted-foreground mb-6 max-w-md leading-relaxed">
+          <p className="text-base text-muted-foreground mb-8 max-w-md leading-relaxed">
             {description}
           </p>
-          
-          <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full text-sm h-10 px-5 mb-8">
-            Learn more
-          </Button>
           
           {/* Feature List - 2 Columns */}
           <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-md">
@@ -77,9 +72,9 @@ const FeatureSection = ({
               {leftFeatures.map((feature) => {
                 const Icon = featureIcons[feature] || Users;
                 return (
-                  <div key={feature} className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
-                    <span className="text-foreground text-sm font-medium">{feature}</span>
+                  <div key={feature} className="flex items-center gap-3">
+                    <Icon className="w-8 h-8 text-muted-foreground" strokeWidth={1.5} />
+                    <span className="text-foreground text-xl font-medium">{feature}</span>
                   </div>
                 );
               })}
@@ -88,9 +83,9 @@ const FeatureSection = ({
               {rightFeatures.map((feature) => {
                 const Icon = featureIcons[feature] || Users;
                 return (
-                  <div key={feature} className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
-                    <span className="text-foreground text-sm font-medium">{feature}</span>
+                  <div key={feature} className="flex items-center gap-3">
+                    <Icon className="w-8 h-8 text-muted-foreground" strokeWidth={1.5} />
+                    <span className="text-foreground text-xl font-medium">{feature}</span>
                   </div>
                 );
               })}
