@@ -8,7 +8,7 @@ interface FeatureItem {
 
 interface FeatureSectionProps {
   tag: string;
-  title: string;
+  title: React.ReactNode;
   description: string;
   features: string[];
   image: string;
