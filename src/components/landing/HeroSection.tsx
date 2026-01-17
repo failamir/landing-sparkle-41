@@ -115,7 +115,7 @@ const HeroSection = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-[14px] md:right-[22px] top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card z-20"
+              className="absolute right-[8px] md:right-[10px] top-1/4 w-48 md:w-64 rounded-xl shadow-card overflow-hidden border border-border/50 bg-card z-20"
             >
               <img
                 src="https://framerusercontent.com/images/OAfFV1qg6kFwEfYQu3EMYzDu8EE.png"
