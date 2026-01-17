@@ -10,19 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import btnBg1 from "@/assets/btn-bg-1.avif";
-import btnBg2 from "@/assets/btn-bg-2.avif";
-import btnBg3 from "@/assets/btn-bg-3.avif";
-import btnBg4 from "@/assets/btn-bg-4.avif";
-import btnBg5 from "@/assets/btn-bg-5.avif";
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBookDemo, setShowBookDemo] = useState(false);
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-  
-  const backgroundImages = [btnBg1, btnBg2, btnBg3, btnBg4, btnBg5];
 
   const navLinks = [
     { label: "Product", href: "/" },
@@ -42,14 +33,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Background animation for Book demo button
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [backgroundImages.length]);
 
   return (
     <motion.header 
@@ -120,26 +103,16 @@ const Navbar = () => {
           <AnimatePresence>
             {showBookDemo && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.9, x: 20 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.2 }}
               >
                 <Button 
                   size="sm" 
-                  className="relative overflow-hidden text-white font-semibold"
+                  className="bg-[#7dd3fc] hover:bg-[#7dd3fc]/90 text-foreground font-semibold"
                 >
-                  {backgroundImages.map((bg, index) => (
-                    <div
-                      key={index}
-                      className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-                      style={{
-                        backgroundImage: `url(${bg})`,
-                        opacity: currentBgIndex === index ? 1 : 0,
-                      }}
-                    />
-                  ))}
-                  <span className="relative z-10">Book demo</span>
+                  Book demo
                 </Button>
               </motion.div>
             )}
