@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.png";
 import btnBg1 from "@/assets/btn-bg-1.avif";
@@ -23,13 +23,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden bg-[var(--hero-gradient)]">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-[840px]">
         {/* Hero Content */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
+          className="text-center"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight mb-6">
             Bring joy to
@@ -43,19 +43,16 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button className="relative min-w-[160px] h-12 px-6 rounded-full overflow-hidden text-white font-medium shadow-lg hover:scale-105 transition-transform">
-              {/* Animated Background */}
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentBgIndex}
-                  src={buttonBackgrounds[currentBgIndex]}
+              {/* All backgrounds stacked - crossfade effect */}
+              {buttonBackgrounds.map((bg, index) => (
+                <img
+                  key={index}
+                  src={bg}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: currentBgIndex === index ? 1 : 0 }}
                 />
-              </AnimatePresence>
+              ))}
               <span className="relative z-10">Book a demo</span>
             </button>
             <Button variant="heroOutline" size="lg" className="min-w-[160px]">
