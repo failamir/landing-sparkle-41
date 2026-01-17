@@ -60,6 +60,8 @@ const HeroSection = () => {
                 src={heroDashboard} 
                 alt="Aboard HR Dashboard" 
                 className="w-full h-auto"
+                width={1022}
+                height={727}
               />
             </div>
             
