@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 const DemoEverydayHr = () => {
     const [activeTab, setActiveTab] = useState("Home");
     const [messageInput, setMessageInput] = useState("");
+    const [showPendingRequests, setShowPendingRequests] = useState(false);
 
     const navTabs = ["Home", "Time-off", "Whistleblowing", "People", "1-on-1", "Onboarding"];
 
@@ -398,29 +399,50 @@ const DemoEverydayHr = () => {
     );
 
     const renderTimeOffContent = () => (
-        <div className="flex">
+        <div className="relative">
             {/* Main Content */}
-            <div className="flex-1 p-6">
+            <div className="p-6">
                 {/* Page Title & Filters */}
-                <div className="mb-4">
-                    <h1 className="text-xl font-semibold text-gray-900 mb-3">Time-off</h1>
-                    <div className="flex items-center gap-2">
-                        <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
-                            <span>📋</span> View
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
-                            My reports <X size={14} />
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
-                            <span>🏖️</span> Availability type
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
-                            All <X size={14} />
-                        </button>
-                        <button className="p-1.5 hover:bg-gray-100 rounded-full text-gray-500">
-                            <Plus size={18} />
-                        </button>
+                <div className="mb-4 flex items-center justify-between">
+                    <div>
+                        <h1 className="text-xl font-semibold text-gray-900 mb-3">Time-off</h1>
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
+                                <span>📋</span> View
+                            </button>
+                            <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
+                                My reports <X size={14} />
+                            </button>
+                            <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
+                                <span>🏖️</span> Availability type
+                            </button>
+                            <button className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">
+                                All <X size={14} />
+                            </button>
+                            <button className="p-1.5 hover:bg-gray-100 rounded-full text-gray-500">
+                                <Plus size={18} />
+                            </button>
+                        </div>
                     </div>
+                    {/* Toggle Pending Requests Button */}
+                    <button
+                        onClick={() => setShowPendingRequests(!showPendingRequests)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                            showPendingRequests
+                                ? "bg-blue-500 text-white"
+                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        }`}
+                    >
+                        <Clock size={16} />
+                        Pending requests
+                        {pendingRequests.filter(r => r.status === "pending").length > 0 && (
+                            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs ${
+                                showPendingRequests ? "bg-white text-blue-500" : "bg-blue-500 text-white"
+                            }`}>
+                                {pendingRequests.filter(r => r.status === "pending").length}
+                            </span>
+                        )}
+                    </button>
                 </div>
 
                 {/* Timeline Calendar */}
@@ -537,55 +559,68 @@ const DemoEverydayHr = () => {
                 </div>
             </div>
 
-            {/* Sidebar - Pending Requests */}
-            <div className="w-80 border-l border-gray-100 p-6">
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-lg font-semibold text-gray-900">Pending requests</h2>
-                    <button className="p-1 hover:bg-gray-100 rounded text-gray-400">
-                        <X size={18} />
-                    </button>
-                </div>
-
-                {["Today", "Past week", "Past month"].map((group) => {
-                    const groupRequests = pendingRequests.filter((r) => r.group === group);
-                    if (groupRequests.length === 0) return null;
-                    return (
-                        <div key={group} className="mb-6">
-                            <h3 className="text-sm text-gray-500 mb-3">{group}</h3>
-                            <div className="space-y-2">
-                                {groupRequests.map((request, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
-                                    >
-                                        <div className="relative">
-                                            <Avatar className="w-10 h-10">
-                                                <AvatarImage src={request.avatar} />
-                                                <AvatarFallback>{request.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
-                                            </Avatar>
-                                            <div className="absolute -bottom-1 -right-1">
-                                                {getStatusBadge(request.status)}
-                                            </div>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <div className="text-sm font-medium text-gray-900">{request.name}</div>
-                                            <div className="text-xs text-gray-500 flex items-center gap-1">
-                                                <span>{request.emoji}</span>
-                                                <span>{request.type}</span>
-                                                <span>·</span>
-                                                <span>{request.time}</span>
-                                            </div>
-                                        </div>
-                                        <button className="p-1 hover:bg-gray-200 rounded text-gray-400">
-                                            <MoreHorizontal size={16} />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
+            {/* Floating Sidebar - Pending Requests */}
+            {showPendingRequests && (
+                <>
+                    {/* Backdrop */}
+                    <div 
+                        className="fixed inset-0 bg-black/20 z-40"
+                        onClick={() => setShowPendingRequests(false)}
+                    />
+                    {/* Panel */}
+                    <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-50 p-6 overflow-y-auto animate-in slide-in-from-right duration-200">
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-lg font-semibold text-gray-900">Pending requests</h2>
+                            <button 
+                                onClick={() => setShowPendingRequests(false)}
+                                className="p-1 hover:bg-gray-100 rounded text-gray-400"
+                            >
+                                <X size={18} />
+                            </button>
                         </div>
-                    );
-                })}
-            </div>
+
+                        {["Today", "Past week", "Past month"].map((group) => {
+                            const groupRequests = pendingRequests.filter((r) => r.group === group);
+                            if (groupRequests.length === 0) return null;
+                            return (
+                                <div key={group} className="mb-6">
+                                    <h3 className="text-sm text-gray-500 mb-3">{group}</h3>
+                                    <div className="space-y-2">
+                                        {groupRequests.map((request, i) => (
+                                            <div
+                                                key={i}
+                                                className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
+                                            >
+                                                <div className="relative">
+                                                    <Avatar className="w-10 h-10">
+                                                        <AvatarImage src={request.avatar} />
+                                                        <AvatarFallback>{request.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
+                                                    </Avatar>
+                                                    <div className="absolute -bottom-1 -right-1">
+                                                        {getStatusBadge(request.status)}
+                                                    </div>
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="text-sm font-medium text-gray-900">{request.name}</div>
+                                                    <div className="text-xs text-gray-500 flex items-center gap-1">
+                                                        <span>{request.emoji}</span>
+                                                        <span>{request.type}</span>
+                                                        <span>·</span>
+                                                        <span>{request.time}</span>
+                                                    </div>
+                                                </div>
+                                                <button className="p-1 hover:bg-gray-200 rounded text-gray-400">
+                                                    <MoreHorizontal size={16} />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </>
+            )}
         </div>
     );
 
