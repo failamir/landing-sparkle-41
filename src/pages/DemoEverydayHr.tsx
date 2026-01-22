@@ -7,7 +7,7 @@ const DemoEverydayHr = () => {
     const [activeTab, setActiveTab] = useState("Home");
     const [messageInput, setMessageInput] = useState("");
 
-    const navTabs = ["Home", "Whistleblowing", "People", "1-on-1", "Onboarding"];
+    const navTabs = ["Home", "Time-off", "Whistleblowing", "People", "1-on-1", "Onboarding"];
 
     const teamMembers = [
         { name: "Lillian Peterson", avatar: "https://i.pravatar.cc/150?img=1", initials: "LP" },
