@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, X, Search, Bell, MoreHorizontal, Plus, Clock, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Search, Bell, MoreHorizontal, Plus, Clock, ArrowRight, FileText, Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 const DemoEverydayHr = () => {
     const [activeTab, setActiveTab] = useState("Home");
+    const [messageInput, setMessageInput] = useState("");
 
-    const navTabs = ["Home", "Time-off", "People", "1-on-1", "Onboarding"];
+    const navTabs = ["Home", "Whistleblowing", "People", "1-on-1", "Onboarding"];
 
     const teamMembers = [
         { name: "Lillian Peterson", avatar: "https://i.pravatar.cc/150?img=1", initials: "LP" },
@@ -224,6 +225,173 @@ const DemoEverydayHr = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+        </div>
+    );
+
+    const whistleblowingMessages = [
+        {
+            id: 1,
+            sender: "Brooklyn Simmons",
+            avatar: "https://i.pravatar.cc/150?img=20",
+            time: "Just now",
+            message: "Thank you for submitting the case, we have now started the investigation and will contact you accordingly.",
+            isHandler: true,
+        },
+        {
+            id: 2,
+            sender: "Anonymous reporter",
+            avatar: null,
+            time: "Just now",
+            message: "Thank you!",
+            isHandler: false,
+        },
+    ];
+
+    const renderWhistleblowingContent = () => (
+        <div className="flex flex-1">
+            {/* Main Content */}
+            <div className="flex-1 p-8 border-r border-gray-100">
+                {/* Back Button & Title */}
+                <div className="flex items-center gap-3 mb-6">
+                    <button className="text-gray-500 hover:text-gray-700">
+                        <ChevronLeft size={20} />
+                    </button>
+                    <h1 className="text-lg font-medium text-gray-900">
+                        Report <span className="text-gray-400">(e5bb5aba-50a7-479a-b06a-5a6db4d1d6e5)</span>
+                    </h1>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                    <button className="ml-auto text-gray-400 hover:text-gray-600">
+                        <MoreHorizontal size={18} />
+                    </button>
+                </div>
+
+                {/* Report Content */}
+                <div className="mb-8">
+                    <p className="text-gray-700 mb-4">
+                        I'm writing to express serious concerns regarding the unsafe conditions prevailing in the warehouse. The current state poses significant risks to employee safety, and urgent action is needed to rectify these issues.
+                    </p>
+                    <p className="text-gray-700 mb-4">Observations:</p>
+                    <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                        <li>Poor housekeeping and cluttered aisles.</li>
+                        <li>Inadequate safety equipment and signage.</li>
+                        <li>Improper material handling practices.</li>
+                        <li>Failure to enforce safety policies.</li>
+                        <li>Inadequate employee training.</li>
+                    </ul>
+                    <p className="text-gray-700">
+                        It's crucial to address these issues promptly to prevent potential injuries and ensure a safe working environment. I urge you to take immediate steps to improve safety standards in the warehouse.
+                    </p>
+                </div>
+
+                {/* File Attachment */}
+                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg mb-8 w-fit">
+                    <FileText size={18} className="text-gray-400" />
+                    <span className="text-sm text-gray-700">text.doc</span>
+                </div>
+
+                {/* Message Thread */}
+                <div className="space-y-4 mb-6">
+                    {whistleblowingMessages.map((msg) => (
+                        <div key={msg.id} className="flex gap-3">
+                            {msg.isHandler ? (
+                                <Avatar className="w-10 h-10">
+                                    <AvatarImage src={msg.avatar || undefined} />
+                                    <AvatarFallback>BS</AvatarFallback>
+                                </Avatar>
+                            ) : (
+                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <span className="text-gray-500 text-sm">👤</span>
+                                </div>
+                            )}
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-sm font-medium text-gray-900">{msg.sender}</span>
+                                    <span className="text-xs text-gray-400">{msg.time}</span>
+                                </div>
+                                <p className="text-sm text-gray-700">{msg.message}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Message Input */}
+                <div className="flex items-center gap-3">
+                    <Avatar className="w-10 h-10">
+                        <AvatarImage src="https://i.pravatar.cc/150?img=20" />
+                        <AvatarFallback>BS</AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 relative">
+                        <input
+                            type="text"
+                            placeholder="Write message to anonymous reporter..."
+                            value={messageInput}
+                            onChange={(e) => setMessageInput(e.target.value)}
+                            className="w-full px-4 py-3 bg-gray-50 rounded-full text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                        />
+                        <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-500">
+                            <Send size={18} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Right Sidebar */}
+            <div className="w-80 p-6">
+                {/* Status Badge */}
+                <div className="flex items-center gap-2 mb-4">
+                    <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Open</span>
+                    <button className="ml-auto text-gray-400 hover:text-gray-600">
+                        <MoreHorizontal size={18} />
+                    </button>
+                </div>
+
+                {/* Details */}
+                <div className="space-y-4 mb-6">
+                    <div className="flex items-start justify-between">
+                        <span className="text-sm text-gray-500">Received</span>
+                        <span className="text-sm text-gray-900">March 24, 2005</span>
+                    </div>
+                    <div className="flex items-start justify-between">
+                        <span className="text-sm text-gray-500">ID</span>
+                        <span className="text-sm text-gray-900 text-right">e5bb5aba-50a7-479a-<br />b06a-5a6db4d1d6e5</span>
+                    </div>
+                </div>
+
+                {/* Category Dropdown */}
+                <div className="mb-4">
+                    <label className="text-sm text-gray-500 block mb-2">Category</label>
+                    <button className="w-full flex items-center justify-between px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900">
+                        Misconduct
+                        <ChevronRight size={16} className="text-gray-400 rotate-90" />
+                    </button>
+                </div>
+
+                {/* Handler Dropdown */}
+                <div className="mb-6">
+                    <label className="text-sm text-gray-500 block mb-2">Handler</label>
+                    <button className="w-full flex items-center justify-between px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900">
+                        <div className="flex items-center gap-2">
+                            <Avatar className="w-6 h-6">
+                                <AvatarImage src="https://i.pravatar.cc/150?img=20" />
+                                <AvatarFallback>BS</AvatarFallback>
+                            </Avatar>
+                            Brooklyn Simmons
+                        </div>
+                        <ChevronRight size={16} className="text-gray-400 rotate-90" />
+                    </button>
+                </div>
+
+                {/* Resolution Note */}
+                <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-sm text-gray-700 mb-3">
+                        I'm pleased to announce that the safety concerns raised regarding the conditions in the warehouse have been successfully addressed, and the issue has been resolved.
+                    </p>
+                    <div className="flex items-center gap-2 text-xs text-gray-400">
+                        <div className="w-4 h-4 bg-orange-400 rounded-full"></div>
+                        20 minutes ago
+                    </div>
                 </div>
             </div>
         </div>
@@ -467,7 +635,9 @@ const DemoEverydayHr = () => {
                 </div>
             </header>
 
-            {activeTab === "Home" ? renderHomeContent() : renderTimeOffContent()}
+            {activeTab === "Home" && renderHomeContent()}
+            {activeTab === "Whistleblowing" && renderWhistleblowingContent()}
+            {activeTab === "Time-off" && renderTimeOffContent()}
         </div>
     );
 };
